@@ -1,4 +1,5 @@
 FROM python:3.8.10
+USER 1000
 
 COPY .  /app
 WORKDIR /app/newtest
