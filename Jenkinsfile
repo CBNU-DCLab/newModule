@@ -52,8 +52,12 @@ podTemplate(label: 'docker-build',
 
         script {
           //kubernetesDeploy(configs: "/root/project/newModule/new-deployment.yaml","/root/project/newModulenew-service.yaml")
-          sh 'kubectl apply -f newModulenew-service.yaml'
-          sh 'kubectl apply -f new-deployment.yaml'
+          def kubectlPath = "/usr/bin/kubectl"
+          
+          // Kubernetes에 배포하기 위한 kubectl 명령어 실행
+          sh "${kubectlPath} apply -f deployment.yaml"
+          sh '${kubectlPath} apply -f newModulenew-service.yaml'
+          sh '${kubectlPath} apply -f new-deployment.yaml'
         
       }
     }
