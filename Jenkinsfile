@@ -51,7 +51,7 @@ podTemplate(label: 'docker-build',
      stage('Deploying container to Kubernetes') {
       steps {
         script {
-          kubernetesDeploy(configs: "django-deployment.yaml","django-service.yaml")
+          kubernetesDeploy(configs: "/root/project/newModule/new-deployment.yaml","/root/project/newModulenew-service.yaml")
         }
       }
     }
