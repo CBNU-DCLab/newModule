@@ -49,14 +49,10 @@ podTemplate(label: 'docker-build',
         }
 
      stage('Deploying container to Kubernetes') {
-
+      steps {
         script {
           kubernetesDeploy(configs: "/root/project/newModule/new-deployment.yaml","/root/project/newModulenew-service.yaml")
-          //def kubectlPath = "/usr/bin/kubectl"
-          // Kubernetes에 배포하기 위한 kubectl 명령어 실행
-          // sh 'which kubectl'
-          // sh 'ssh root@113.198.137.208 ${kubectlPath} apply -f newModulenew-service.yaml'
-        
+        }
       }
     }
     }
