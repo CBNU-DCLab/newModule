@@ -48,9 +48,12 @@ podTemplate(label: 'docker-build',
             }
         }
 
-      stage('Kubernetes deploy') {
-        kubernetesDeploy configs: "django-deployment.yaml"
-        sh "/usr/local/bin/kubectl rollout restart deployment/test-deployment"
+     stage('Deploying container to Kubernetes') {
+      steps {
+        script {
+          kubernetesDeploy(configs: "django-deployment.yaml")
+        }
+      }
     }
     }
     
