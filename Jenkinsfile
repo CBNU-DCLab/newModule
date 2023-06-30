@@ -59,6 +59,4 @@ podTemplate(label: 'docker-build',
         }
      }
     }
-    }
-    
 }
