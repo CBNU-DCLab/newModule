@@ -51,8 +51,7 @@ podTemplate(label: 'docker-build',
      stage('Deploying container to Kubernetes') {
         script {
             sh 'pwd'
-            sh 'which kubectl'
-          // kubernetesDeploy(configs: "/root/project/newModule/new-deployment.yaml","/root/project/newModulenew-service.yaml")
+            sh 'kubectl apply -f /root/project/newModule/new-deployment.yaml'
       }
     }
     }
