@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: newmodule
+spec:
+  selector:
+    app: newmodule
+  ports:
+    - port: 443
+  type: NodePort
