@@ -2,6 +2,7 @@ FROM python:3.8.10
 
 
 COPY .  /app
+COPY kubectl /bin/kubectl 
 WORKDIR /app/newtest
 
 RUN ["apt-get", "-y", "update"]
