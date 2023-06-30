@@ -54,10 +54,10 @@ podTemplate(label: 'docker-build',
         }
 
      stage('Deploying container to Kubernetes') {
-        script {
-            sh 'pwd'
+        container("kubectl") {
             sh 'kubectl apply -f /root/project/newModule/new-deployment.yaml'
-      }
+        }
+     }
     }
     }
     
