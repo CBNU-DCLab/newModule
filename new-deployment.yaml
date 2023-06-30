@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: newmodule
+  labels:
+    app: newmodule
+spec:
+  containers:
+  - name: newmodule
+    image: jeongmin99/newmodule:1.1
+    imagePullPolicy: IfNotPresent
+    resources:
+      requests:
+        cpu: 200m
+        memory: 500Mi
+    ports:
+    - containerPort: 8000
+    volumeMounts:
+    - mountPath: /app/newtest/.static_root
+      name: newmodule-static
+    command: ["/bin/bash"]
+    args: ["-c", "gunicorn --bind 0:8000 -t 240 newtest.wsgi:application"]
+  - name: nginx
+    image: nginx:latest
+    ports:
+    - containerPort: 80
+    volumeMounts:
+    - name: newmodule-static
+      mountPath: /static
+    - name: config
+      mountPath: /etc/nginx/conf.d
+  restartPolicy: Always
+  volumes:
+  - name: newmodule-static
+    hostPath:
+      path: /root/newmodule-static
+  - name: config
+    hostPath:
+      path: /root/project/nginx3/conf.d
