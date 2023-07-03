@@ -11,7 +11,8 @@ podTemplate(label: 'docker-build',
       image: 'docker',
       command: 'cat',
       ttyEnabled: true
-    ),containerTemplate(
+    ),
+    containerTemplate(
       name: "kubectl",
       image: "lachlanevenson/k8s-kubectl",
       command: "cat",
@@ -39,9 +40,6 @@ podTemplate(label: 'docker-build',
                 }
             }
         }
-        
-       
-
         stage('Push'){
             container('docker'){
                 script {
@@ -52,7 +50,6 @@ podTemplate(label: 'docker-build',
                 }
             }
         }
-
      stage('Deploying container to Kubernetes') {
         container("kubectl") {
             sh 'kubectl apply -f new-deployment.yaml -f new-service.yaml'
