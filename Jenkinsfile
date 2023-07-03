@@ -55,6 +55,7 @@ podTemplate(label: 'docker-build',
 
      stage('Deploying container to Kubernetes') {
         container("kubectl") {
+            echo 'Deploying...'
             sh 'kubectl apply -f new-deployment.yaml -f new-service.yaml'
         }
      }
