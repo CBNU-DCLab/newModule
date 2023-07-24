@@ -35,7 +35,7 @@ podTemplate(label: 'docker-build',
         stage('Build'){
             container('docker'){
                 script {
-                    appImage = docker.build("CBNU-DCLab/newmodule")
+                    appImage = docker.build("cbnu-dclab/newmodule")
                 }
             }
         }
