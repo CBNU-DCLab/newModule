@@ -8,8 +8,7 @@ podTemplate(label: 'docker-build',
     ),
     containerTemplate(
       name: 'docker',
-      image: 'docker',
-      imagePullPolicy: 'Always',
+      image: 'docker:latest',
       command: 'cat',
       ttyEnabled: true
     ),containerTemplate(
