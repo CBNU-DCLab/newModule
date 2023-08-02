@@ -35,7 +35,7 @@ podTemplate(label: 'docker-build',
         stage('Build'){
             container('docker'){
                 script {
-                    appImage = docker.build("jeongmin99/newmodule")
+                    appImage = docker.build('--no-cache','-t jeongmin99/newmodule')
                 }
             }
         }
