@@ -10,7 +10,12 @@ import urllib3
 from wordcloud import WordCloud
 #import matplotlib.pyplot as plt
 # Create your views here.
+
+var link=""
+var convid=""
 def index(request):
+    link=request.path
+    convid=link.split('?')[1]
     return HttpResponse("Hello, World!")
 
 cyp_key = bytes([0x82, 0xC8, 0xA9, 0xC3, 0xD2, 0xE1, 0xF0, 0x3F, 0x28, 0x2d, 0x3c, 0x4b, 0x5a, 0x69, 0x78, 0x87])
@@ -87,8 +92,8 @@ def get_data(content_div,mackey):
     with open('/root/project/nginx/html/wdx/payload.txt','w') as file:
       json.dump(payload,file)
 
-mackey=get_gs_cmk('113.198.137.208',30001,'root','root','root','d75f196eec304f7facc61504c114d430')
-content_div=get_faj('113.198.137.208',30001,'root','root','root','d75f196eec304f7facc61504c114d430')
+mackey=get_gs_cmk('113.198.137.208',30001,'root','root','root',convid)
+content_div=get_faj('113.198.137.208',30001,'root','root','root',convid)
 get_data(content_div,mackey)
 
 http=urllib3.PoolManager()
