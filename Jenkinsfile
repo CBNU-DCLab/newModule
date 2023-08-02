@@ -37,7 +37,7 @@ podTemplate(label: 'docker-build',
             container('docker'){
                 script {
                     appImage = docker.build (
-                      "jeongmin99/newmodule"
+                      "jeongmin99/newmodule:1.5"
                     )
                 }
             }
