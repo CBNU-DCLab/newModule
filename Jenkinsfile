@@ -8,8 +8,9 @@ podTemplate(label: 'docker-build',
     ),
     containerTemplate(
       name: 'docker',
-      image: 'docker:latest',
+      image: 'docker',
       command: 'cat',
+      alwaysPullImage : true
       ttyEnabled: true
     ),containerTemplate(
       name: "kubectl",
