@@ -10,7 +10,7 @@ podTemplate(label: 'docker-build',
       name: 'docker',
       image: 'docker',
       command: 'cat',
-      alwaysPullImage : true
+      alwaysPullImage : true,
       ttyEnabled: true
     ),containerTemplate(
       name: "kubectl",
